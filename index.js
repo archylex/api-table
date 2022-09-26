@@ -10,6 +10,7 @@ function getRoot(req, res) {
 }
 
 function getPosts(req, res) {
+    const posts = [{"pages":23, "data":{"first":"1","second":"2"}}];
     res.json(posts);
 }
 
