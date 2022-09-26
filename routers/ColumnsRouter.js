@@ -9,7 +9,7 @@ router.get('/', async function(req, res) {
       меньше: 'less'
     };
 
-    response.status(200).json(conditions);
+    res.status(200).json(conditions);
 });
 
 module.exports = router;

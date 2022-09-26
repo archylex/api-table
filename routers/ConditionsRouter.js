@@ -9,7 +9,7 @@ router.get('/', async function(req, res) {
       Расстояние: '_distance',
     };
 
-    response.status(200).json(columns);
+    res.status(200).json(columns);
 });
 
 module.exports = router;
