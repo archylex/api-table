@@ -9,7 +9,7 @@ function getRoot(req, res) {
     res.send('Api');
 }
 
-function getPost(req, res) {
+function getPosts(req, res) {
     res.json(posts);
 }
 
