@@ -2,8 +2,6 @@ const express = require('express');
 const router = express.Router();
 const { Client } = require('pg');
 
-const ITEMS_ON_PAGE = 5;
-
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -34,6 +32,8 @@ function getFilter(column, condition, search) {
 
     return str;
 }
+
+const ITEMS_ON_PAGE = 5;
 
 async function getDataByPage(page, sort, order, search, column, condition) {
     const startNumber = (page - 1) * ITEMS_ON_PAGE;
