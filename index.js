@@ -15,17 +15,11 @@ function getRoot(req, res) {
   <h3>Get request.</h3>');
 }
 
-function getPosts(req, res) {
-    const posts = [{"pages":23, "data":{"first":"1","second":"2"}}];
-    res.json(posts);
-}
-
 app.use(express.static('public'));
 app.use(express.json());
 
 app.use('/getdata', cors(), dataRouter);
 
 app.get('/', getRoot);
-app.get('/posts', getPosts);
 
 app.listen(process.env.PORT || 3000, requestListener);
