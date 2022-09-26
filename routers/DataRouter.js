@@ -36,9 +36,11 @@ function getFilter(column, condition, search) {
 const ITEMS_ON_PAGE = 5;
 
 async function getDataByPage(page, sort, order, search, column, condition) {
+    console.log('sort: ', sort)
+    console.log('column: ', column)
     const startNumber = (page - 1) * ITEMS_ON_PAGE;
-    const orderBy = (sort == null || sort === '') ? '' : `ORDER BY ${sort} ${order}`;
-    const filter = (search == null || search.length < 1) ? '' : 'WHERE ' + getFilter(column, condition, search) ;
+    const orderBy = (sort == null || sort.length < 1) ? '' : `ORDER BY ${sort} ${order}`;
+    const filter = (search == null || search.length < 1) ? '' : (column == null || column.length < 1) ? '' : 'WHERE ' + getFilter(column, condition, search) ;
     const dataSql = `SELECT * FROM data ${filter} ${orderBy} LIMIT ${ITEMS_ON_PAGE} OFFSET ${startNumber}`;
     const countSql = `SELECT COUNT(*) AS _amount FROM data ${filter}`;
 console.log(filter);
