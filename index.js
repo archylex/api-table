@@ -23,8 +23,9 @@ function getPosts(req, res) {
 app.use(express.static('public'));
 app.use(express.json());
 
+app.use('/getdata', cors(), dataRouter);
+
 app.get('/', getRoot);
 app.get('/posts', getPosts);
-app.get('/getdata', cors(), dataRouter);
 
 app.listen(process.env.PORT || 3000, requestListener);
