@@ -11,7 +11,7 @@ const client = new Client({
 
 client.connect();
 
-router.get('/all', async function(req, res) {
+router.get('/', async function(req, res) {
     /*const { rows } = await client.query(`SELECT * FROM rating WHERE size='${size}'`);*/
     res.status(200).json([{"n":"1"}]);
 });
