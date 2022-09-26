@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { Client } = require('pg');
 
+const ITEMS_ON_PAGE = 5;
+
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {
