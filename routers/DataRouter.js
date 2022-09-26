@@ -16,32 +16,17 @@ function getFilter(column, condition, search) {
 
     switch(condition) {
         case 'equals':
-            if (column === '_name') {
-                str = `${column}='${search}'`;
-            } else {
-                str = `${column}=${search}`;
-            }
+            str = `${column}='${search}'`;
             break;
         case 'contains':
-            if (column === '_name') {
-                str = `${column} like '%${search}%'`;
-            } else {
-                str = `${column}::varchar(255) like '%${search}%'`;
-            }
+            const fixColumn = isNaN(column) ? column : `${column}::varchar(255)`;
+            str = `${fixColumn} like '%${search}%'`;
             break;
         case 'more':
-            if (column === '_name') {
-                str = `${column}>'${search}'`;
-            } else {
-                str = `${column}>${search}`;
-            }
+            str = `${column}>'${search}'`;
             break;
         case 'less':
-            if (column === '_name') {
-                str = `${column}<'${search}'`;
-            } else {
-                str = `${column}<${search}`;
-            }
+            str = `${column}<'${search}'`;
             break;
     }
 
