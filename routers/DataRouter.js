@@ -37,11 +37,11 @@ const ITEMS_ON_PAGE = 5;
 
 async function getDataByPage(page, sort, order, search, column, condition) {
     const startNumber = (page - 1) * ITEMS_ON_PAGE;
-    const orderBy = (search == null || sort === '') ? '' : `ORDER BY ${sort} ${order}`;
+    const orderBy = (sort == null || sort === '') ? '' : `ORDER BY ${sort} ${order}`;
     const filter = (search == null || search === '') ? '' : 'WHERE ' + getFilter(column, condition, search) ;
     const dataSql = `SELECT * FROM data ${filter} ${orderBy} LIMIT ${ITEMS_ON_PAGE} OFFSET ${startNumber}`;
     const countSql = `SELECT COUNT(*) AS _amount FROM data ${filter}`;
-
+console.log(filter);
     try {
         const dataResponse = await client.query(dataSql);
         const countResponse = await client.query(countSql);
