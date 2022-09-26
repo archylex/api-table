@@ -2,14 +2,14 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', async function(req, res) {
-    const columns = {
-      Дата: '_date',
-      Название: '_name',
-      Количество: '_count',
-      Расстояние: '_distance',
+    const conditions = {
+      равно: 'equals',
+      содержит: 'contains',
+      больше: 'more',
+      меньше: 'less'
     };
 
-    res.status(200).json(columns);
+    res.status(200).json(conditions);
 });
 
 module.exports = router;
