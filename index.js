@@ -1,5 +1,9 @@
 const express = require('express') ;
 const app = express();
+
+const cors = require('cors');
+app.use(cors());
+
 const dataRouter = require('./routers/DataRouter');
 
 function requestListener(req, res) {
@@ -17,9 +21,10 @@ function getPosts(req, res) {
 }
 
 app.use(express.static('public'));
+app.use(express.json());
 
 app.get('/', getRoot);
 app.get('/posts', getPosts);
-app.get('/getdata', DataRouter);
+app.get('/getdata', cors(), dataRouter);
 
 app.listen(process.env.PORT || 3000, requestListener);
